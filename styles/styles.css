@@ -1,0 +1,798 @@
+@import "general.css";
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #fefefe;
+}
+
+.container {
+  max-width: 1250px;
+  padding: 0 50px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 49px;
+  padding-bottom: 47px;
+  align-items: center;
+}
+.header .logo {
+  line-height: 20px;
+}
+.header_nav {
+  color: #000;
+  font-family: Averta Demo PE Cutted Demo;
+  font-weight: 400;
+  letter-spacing: 0.16px;
+  display: flex;
+  gap: 60px;
+  list-style: none;
+}
+@media screen and (max-width: 800px) {
+  .header_nav {
+    display: none;
+  }
+}
+.header_nav:hover {
+  cursor: pointer;
+  color: #151515;
+}
+.header .close_menu,
+.header #check-menu,
+.header .burger_menu {
+  display: none;
+}
+@media screen and (max-width: 800px) {
+  .header .burger_menu {
+    display: block;
+    z-index: 90;
+    font-size: 20px;
+  }
+  .header .close_menu {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: none;
+    font-size: 20px;
+  }
+  .header #check-menu {
+    display: block;
+    z-index: 90;
+  }
+  .header .header_nav {
+    z-index: 99;
+    list-style: none;
+    background-color: #dae9ff;
+    width: 400px;
+    height: 200vh;
+    position: fixed;
+    top: 0px;
+    right: -400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 100px;
+    gap: 30px;
+    transition: right 0.3s;
+    font-size: 25px;
+  }
+  .header #check-menu:checked ~ .header_nav {
+    right: 0px;
+    z-index: 3;
+  }
+  .header #check-menu:checked ~ label .burger_menu {
+    display: none;
+  }
+  .header #check-menu:checked ~ label .close_menu {
+    display: block;
+  }
+  .header #check-menu {
+    display: none;
+    z-index: 4;
+  }
+  .header label {
+    position: relative;
+    z-index: 9;
+  }
+}
+
+.hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: 40% 60%;
+  gap: 97px;
+  padding-right: 0;
+  padding-bottom: 96px;
+  overflow: hidden;
+}
+@media screen and (max-width: 800px) {
+  .hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 50px;
+    padding-right: 10px;
+  }
+}
+@media screen and (max-width: 800px) {
+  .hero .hero_content {
+    padding: 0 30px;
+  }
+}
+.hero h1 {
+  font-family: Averta Demo PE Cutted Demo;
+  font-size: 40px;
+  font-weight: 400;
+}
+.hero p {
+  color: #565656;
+  font-family: Averta Demo PE Cutted Demo;
+  font-weight: 400;
+  line-height: 160%; /* 25.6px */
+  margin: 40px 0 53px 0;
+}
+@media screen and (max-width: 800px) {
+  .hero p {
+    margin: 30px auto 33px auto;
+  }
+}
+.hero .heroBtn {
+  position: relative;
+  width: 215px;
+  height: 65px;
+  border-radius: 60px;
+  background: #2639ed;
+  color: #fff;
+  font-family: Averta Demo PE Cutted Demo;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 1.3px;
+  border: none;
+}
+.hero img {
+  border-radius: 0px 0px 0px 200px;
+  width: 100%;
+  height: 100%;
+}
+@media screen and (max-width: 800px) {
+  .hero img {
+    border-radius: 0;
+  }
+}
+.hero .img_hero {
+  z-index: 2;
+}
+.hero .img_hero::before {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  top: 0px;
+  left: 43%;
+  width: 129px;
+  height: 129px;
+  background-color: #dae9ff;
+  border-radius: 50%;
+}
+@media screen and (max-width: 800px) {
+  .hero .img_hero::before {
+    top: 240px;
+    left: -15px;
+  }
+}
+.hero .img_hero::after {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  bottom: 0px;
+  left: 82%;
+  width: 178px;
+  height: 178px;
+  border-radius: 0px 0px 100px 0px;
+  background-color: #fff5db;
+}
+@media screen and (max-width: 800px) {
+  .hero .img_hero::after {
+    left: 60%;
+  }
+}
+.hero .modal_form {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 110vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5333333333);
+  display: none;
+  z-index: 90;
+}
+
+.heroForm {
+  z-index: 100;
+  position: fixed;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 5px;
+  width: 600px;
+  height: 400px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.heroForm input {
+  width: 300px;
+  height: 40px;
+  border-radius: 5px;
+}
+.heroForm button {
+  border: none;
+  width: 300px;
+  height: 40px;
+  border-radius: 5px;
+}
+.heroForm button:hover {
+  background-color: #565656;
+}
+.heroForm .cross {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 30px;
+}
+
+.client {
+  margin-top: 40px;
+  display: flex;
+  gap: 60px;
+  align-items: center;
+  overflow: hidden;
+}
+@media screen and (max-width: 1000px) {
+  .client {
+    margin-top: 30px;
+    flex-direction: column;
+    text-align: center;
+  }
+}
+.client div h1 {
+  margin-bottom: 17px;
+  font-family: Averta Demo PE Cutted Demo;
+  font-size: 40px;
+  font-weight: 400;
+}
+.client div p {
+  max-width: 300px;
+  color: #757575;
+  font-family: Averta Demo PE Cutted Demo;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 160%; /* 28.8px */
+}
+
+.client .swiper {
+  width: 900px;
+}
+.client .swiper-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.helpToBusiness {
+  margin-top: 94px;
+  display: flex;
+  align-items: center;
+  gap: 90px;
+}
+@media screen and (max-width: 1000px) {
+  .helpToBusiness {
+    margin-top: 110px;
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+}
+
+.helpToBusiness_text {
+  width: 396px;
+  position: relative;
+}
+.helpToBusiness_text h1 {
+  font-family: Averta Demo PE Cutted Demo;
+  font-size: 40px;
+  font-weight: 400;
+  margin-bottom: 30px;
+  position: relative;
+}
+.helpToBusiness_text h1::before {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  bottom: -12px;
+  right: 78%;
+  width: 178px;
+  height: 178px;
+  border-radius: 100px 0px 0px 0px;
+  background: #fff5db;
+}
+@media screen and (max-width: 1000px) {
+  .helpToBusiness_text h1::before {
+    bottom: -12px;
+    right: 62%;
+  }
+}
+.helpToBusiness_text p {
+  color: #565656;
+  font-family: Averta Demo PE Cutted Demo;
+  font-weight: 400;
+  line-height: 160%; /* 25.6px */
+}
+
+.helpToBusiness_blocs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  position: relative;
+}
+.helpToBusiness_blocs::before {
+  content: "";
+  display: block;
+  z-index: -10;
+  position: absolute;
+  bottom: 100px;
+  right: -50px;
+  width: 900px;
+  height: 619px;
+  border-radius: 150px 0px 0px 0px;
+  background: #f4f9ff;
+}
+@media screen and (max-width: 1000px) {
+  .helpToBusiness_blocs::before {
+    display: none;
+  }
+}
+.helpToBusiness_blocs::after {
+  content: "";
+  z-index: -30;
+  position: absolute;
+  bottom: 36px;
+  right: -28px;
+  width: 120px;
+  height: 120px;
+  background-image: url(img/Ellipse\ 87.svg);
+}
+
+.bloc {
+  width: 308px;
+  height: 379px;
+  border-radius: 40px;
+  border: 1px solid #f2f2f2;
+  background: #fff;
+  box-shadow: 0px 10px 50px 0px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  padding: 39px 57px 0 57px;
+}
+.bloc h1 {
+  color: #000;
+  text-align: center;
+  font-family: Averta Demo PE Cutted Demo;
+  font-size: 24px;
+  margin: 54px 0 27px 0;
+}
+.bloc p {
+  color: #757575;
+  text-align: center;
+  font-family: Averta Demo PE Cutted Demo;
+  font-weight: 400;
+  line-height: 140%; /* 22.4px */
+}
+
+.bloc_one {
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.bloc_two {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.video {
+  margin-top: 146px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 119px;
+}
+@media screen and (max-width: 1000px) {
+  .video {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 50px;
+  }
+}
+
+iframe {
+  width: 550px;
+  height: 372px;
+  border-radius: 32px;
+  box-shadow: 10px 20px 50px 0px rgba(0, 0, 0, 0.15);
+}
+@media screen and (max-width: 1000px) {
+  iframe {
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .video_text {
+    order: -1;
+    padding: 0 50px;
+  }
+}
+.video_text h1 {
+  font-family: Averta Demo PE Cutted Demo;
+  font-size: 40px;
+  font-weight: 400;
+  margin-bottom: 30px;
+  position: relative;
+}
+.video_text h1::before {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  bottom: -53px;
+  left: -40px;
+  width: 178px;
+  height: 178px;
+  border-radius: 0px 0px 100px 0px;
+  background: #eff1ff;
+}
+@media screen and (max-width: 1000px) {
+  .video_text h1::before {
+    bottom: -60px;
+    left: -21px;
+  }
+}
+.video_text p {
+  color: #565656;
+  font-family: Averta Demo PE Cutted Demo;
+  font-weight: 400;
+  line-height: 160%; /* 25.6px */
+}
+
+.video_decor {
+  position: relative;
+}
+.video_decor::before {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  bottom: -53px;
+  right: -40px;
+  width: 129px;
+  height: 129px;
+  border-radius: 50%;
+  background: #fff5db;
+}
+@media screen and (max-width: 1000px) {
+  .video_decor::before {
+    bottom: -60px;
+    right: 116px;
+  }
+}
+
+.reviews {
+  margin-top: 180px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+@media screen and (max-width: 1000px) {
+  .reviews {
+    grid-template-columns: 1fr;
+    margin-top: 150px;
+  }
+}
+
+.reviews_title {
+  grid-column: 1/3;
+  text-align: center;
+  margin-bottom: 50px;
+}
+.reviews_title h1 {
+  color: #000;
+  text-align: center;
+  font-family: Averta Demo PE Cutted Demo;
+  font-size: 40px;
+  margin-bottom: 17px;
+}
+.reviews_title p {
+  color: #757575;
+  text-align: center;
+  font-family: Averta Demo PE Cutted Demo;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 160%; /* 28.8px */
+}
+
+.swiper_reviews {
+  width: 620px;
+  grid-column: 1/2;
+  align-items: center;
+}
+@media screen and (max-width: 1000px) {
+  .swiper_reviews {
+    grid-column: 1/3;
+  }
+}
+.swiper_reviews .photo_reviewer {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 500px 0px 500px 500px;
+  overflow: hidden;
+  position: relative;
+}
+.swiper_reviews .text {
+  padding: 10px;
+}
+.swiper_reviews h1 {
+  margin-bottom: 21px;
+}
+
+.swiper-slide {
+  display: grid !important;
+  grid-template-columns: 0.6fr 1fr;
+  gap: 5px;
+}
+
+.photo_block {
+  display: block;
+  grid-column: 2/3;
+  position: relative;
+}
+@media screen and (max-width: 1000px) {
+  .photo_block {
+    display: none;
+  }
+}
+.photo_block .img_three {
+  position: relative;
+  top: 99px;
+  left: 134px;
+}
+.photo_block .img_one {
+  position: absolute;
+  bottom: -50px;
+  left: 264px;
+}
+.photo_block .img_two {
+  position: absolute;
+  bottom: -108px;
+  left: 111px;
+}
+.photo_block .img_four {
+  position: absolute;
+  top: 0;
+  left: 138px;
+}
+.photo_block .img_five {
+  position: absolute;
+  top: 70px;
+  left: 1px;
+}
+.photo_block .img_six {
+  position: absolute;
+  top: 50px;
+  left: 259px;
+}
+.photo_block .img_seven {
+  position: absolute;
+  top: 205px;
+  left: 5px;
+}
+.photo_block .img_eight {
+  position: absolute;
+  top: 129px;
+  left: 300px;
+}
+.photo_block .circle {
+  width: 184px;
+  height: 184px;
+  background-color: #fff5db;
+  border-radius: 50%;
+  position: absolute;
+  top: 100px;
+  left: 40px;
+  z-index: -1;
+}
+
+.subscribe {
+  margin-top: 180px;
+  border-radius: 75px;
+  background-color: #f4f9ff;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  align-items: center;
+  padding-right: 0;
+  position: relative;
+}
+.subscribe::before {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  bottom: -40px;
+  left: -40px;
+  width: 178px;
+  height: 178px;
+  border-radius: 0px 0px 0px 100px;
+  background: #fff5db;
+}
+@media screen and (max-width: 1000px) {
+  .subscribe::before {
+    display: none;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .subscribe {
+    grid-template-columns: 1fr;
+    text-align: center;
+    border-radius: 0;
+    padding-top: 60px;
+  }
+}
+.subscribe h1 {
+  font-family: Averta Demo PE Cutted Demo;
+  font-size: 40px;
+  font-weight: 400;
+  margin-bottom: 17px;
+}
+.subscribe p {
+  color: #757575;
+  font-family: Averta Demo PE Cutted Demo;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 160%; /* 28.8px */
+}
+
+.blueElement {
+  height: 292px;
+  background-image: url(img/blueElement.svg);
+  background-repeat: no-repeat;
+  position: relative;
+}
+@media screen and (max-width: 1000px) {
+  .blueElement {
+    margin: 0 auto;
+  }
+}
+.blueElement .subscribeForm {
+  border-radius: 60px;
+  border: 1px solid #f1f1f1;
+  background: #fff;
+  box-shadow: 10px 20px 50px 0px rgba(0, 0, 0, 0.15);
+  width: 479px;
+  display: flex;
+  padding: 10px;
+  position: absolute;
+  top: 95px;
+  left: -98px;
+}
+@media screen and (max-width: 1000px) {
+  .blueElement .subscribeForm {
+    left: -235px;
+  }
+}
+.blueElement .subscribeForm div {
+  margin: auto;
+}
+.blueElement .subscribeForm input {
+  width: 100%;
+  outline: none;
+  border: none;
+  border-radius: 6px;
+}
+.blueElement .subscribeForm .require_text {
+  display: none;
+  font-size: 5px;
+  color: red;
+  text-align: left;
+}
+.blueElement .subscribeForm button {
+  width: 188px;
+  height: 60px;
+  border: none;
+  border-radius: 60px;
+  background: #2639ed;
+  color: #fff;
+  margin-left: auto;
+}
+
+.footer {
+  border-top: 1px solid #f2f2f2;
+  border-bottom: 1px solid #f2f2f2;
+  padding-top: 60px;
+  padding-bottom: 30px;
+  display: grid;
+  grid-template-columns: 1.9fr 1fr 1fr 1fr 0.8fr;
+  gap: 50px;
+  margin-top: 140px;
+}
+@media screen and (max-width: 1000px) {
+  .footer {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  .footer .logo_info {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column: 1/5;
+    gap: 10px;
+  }
+  .footer .logo_info p {
+    grid-column: 2/4;
+    grid-row: 1/3;
+    margin: 0;
+    padding-right: 30%;
+  }
+}
+@media screen and (max-width: 800px) {
+  .footer {
+    grid-template-columns: 1fr 1fr;
+  }
+  .footer .logo_info {
+    grid-column: 1/3;
+    gap: 20px;
+  }
+  .footer .logo_info p {
+    padding-right: 0;
+  }
+}
+.footer p {
+  color: #565656;
+  font-family: Averta Demo PE Cutted Demo;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 160%; /* 22.4px */
+  margin: 26px 0 40px 0;
+  padding-right: 20px;
+}
+.footer ul {
+  list-style: none;
+  color: #000;
+  font-family: Averta Demo PE Cutted Demo;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 31px;
+}
+.footer ul h1 {
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 24px;
+}
+
+.socialMedia {
+  display: flex;
+  gap: 16px;
+}
+
+.underText {
+  color: #a4a4a4;
+  font-family: Averta Demo PE Cutted Demo;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 160%; /* 22.4px */
+  text-align: center;
+}
+
+/*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,90 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 49px;
+  padding-bottom: 47px;
+  align-items: center;
+  .logo {
+    line-height: 20px;
+  }
+  &_nav {
+    color: #000;
+    font-family: Averta Demo PE Cutted Demo;
+    font-weight: 400;
+    letter-spacing: 0.16px;
+    display: flex;
+    gap: 60px;
+    list-style: none;
+
+    @include for-large-down {
+      display: none;
+    }
+
+    &:hover {
+      cursor: pointer;
+      color: #151515;
+    }
+  }
+
+  .close_menu,
+  #check-menu,
+  .burger_menu {
+    display: none;
+  }
+
+  @include for-large-down {
+    .burger_menu {
+      display: block;
+      z-index: 90;
+
+      font-size: 20px;
+    }
+    .close_menu {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      display: none;
+      font-size: 20px;
+    }
+    #check-menu {
+      display: block;
+      z-index: 90;
+    }
+    .header_nav {
+      z-index: 99;
+      list-style: none;
+      background-color: #dae9ff;
+      width: 400px;
+      height: 200vh;
+      position: fixed;
+      top: 0px;
+      right: -400px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 100px;
+      gap: 30px;
+      transition: right 0.3s;
+      font-size: 25px;
+    }
+    #check-menu:checked ~ .header_nav {
+      right: 0px;
+      z-index: 3;
+    }
+    #check-menu:checked ~ label .burger_menu {
+      display: none;
+    }
+    #check-menu:checked ~ label .close_menu {
+      display: block;
+    }
+
+    #check-menu {
+      display: none;
+      z-index: 4;
+    }
+    label {
+      position: relative;
+      z-index: 9;
+    }
+  }
+}
